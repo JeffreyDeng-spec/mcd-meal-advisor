@@ -1,6 +1,8 @@
 # 参赛提交记录
 
-公开源码已经上传，2026-10-19 13:53:11（北京时间）已提交官方报名 Issue。当前等待系统校验，不将提交等同报名成功。
+公开源码已经上传，2026-10-19 13:53:11（北京时间）提交官方报名 Issue。官方账号 M-China-Official 于同日13:59:22回复“您的作品已成功参赛”。
+
+成功回执：https://github.com/M-China/mcd-developer-innovation-challenge/issues/882#issuecomment-6260735805
 
 报名 Issue：https://github.com/M-China/mcd-developer-innovation-challenge/issues/882
 

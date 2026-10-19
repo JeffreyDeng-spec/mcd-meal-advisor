@@ -10,7 +10,7 @@
 
 项目仓库：[JeffreyDeng-spec/mcd-meal-advisor](https://github.com/JeffreyDeng-spec/mcd-meal-advisor)。
 
-参赛申请：[官方 Issue #882](https://github.com/M-China/mcd-developer-innovation-challenge/issues/882)，实际报名状态见官方回复。
+已收到官方参赛成功回执：[官方 Issue #882](https://github.com/M-China/mcd-developer-innovation-challenge/issues/882#issuecomment-6260735805)（2026-10-19）。
 
 下载：[v0.1.0 发布页](https://github.com/JeffreyDeng-spec/mcd-meal-advisor/releases/tag/v0.1.0)，包含完整技能、源码和 SHA-256 校验文件。
 
