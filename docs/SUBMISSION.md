@@ -4,6 +4,10 @@
 
 报名 Issue：https://github.com/M-China/mcd-developer-innovation-challenge/issues/882
 
+发布包：https://github.com/JeffreyDeng-spec/mcd-meal-advisor/releases/tag/v0.1.0
+
+公开仓库已通过无登录克隆验证；克隆后53项 Python 测试、JavaScript 测试及离线演示运行通过。发布包只包含已跟踪的公开文件，真实响应和完整券码没有上传。
+
 项目名称：麦麦点餐参谋
 
 项目地址：https://github.com/JeffreyDeng-spec/mcd-meal-advisor
