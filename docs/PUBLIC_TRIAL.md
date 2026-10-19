@@ -2,7 +2,7 @@
 
 ## 公开试玩
 
-目标地址：https://jeffreydeng-spec.github.io/mcd-meal-advisor/
+线上地址：https://jeffreydeng-spec.github.io/mcd-meal-advisor/
 
 这是纯静态的合成数据试玩，包含预算、偏好、显式选店、餐单比较、券体检、模拟换餐、过期与重置、复制真实使用需求。任意自然语言及真实报价仍在已连接官方 MCP 的聊天中处理，不宣称网页理解任意请求或已调用真实业务接口。
 
@@ -31,3 +31,9 @@
 实际工具仅为 now-time-info、query-nearby-stores、query-meals、query-meal-detail、query-store-coupons、query-my-coupons、calculate-price；未下单、领券、取消或兑换。原始记录与本地报告位于忽略的 `.local/growth-trial/`，不公开上传。公开页面、分享卡和视频全部使用另外生成的合成数据。
 
 自动测试：57项 Python 测试通过，原报告与新试玩的 JavaScript 测试通过。新增覆盖合成时钟拒绝真实数据、预算输入、换餐保留主体、引擎嵌入、部署文件清单与原始券码排除。
+
+## 线上发布验收
+
+GitHub Pages 的 HTTPS 已启用，发布分支为 gh-pages，共16个静态文件。线上首页、脚本、合成数据、引擎、分享图、MP4、字幕、安全说明和站点地图均返回200，文件 SHA-256 与已验收本地构建一致；`.env`、`.git/config`、`.local/run.json` 均返回404。输出与本轮真实券标识及券码比对，未发现这些私有值。仓库的凭证扫描、推送保护及私密漏洞报告已确认开启。
+
+线上浏览器已验证选店后生成两份推荐，视频实际播放且无媒体错误；视频为1280×720、60秒、H.264、无音轨。仓库和网站检查限定于本项目与发布产物，不能据此保证没有任何安全漏洞。
