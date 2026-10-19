@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jeffreydeng-spec.github.io/mcd-meal-advisor/sitemap.xml
