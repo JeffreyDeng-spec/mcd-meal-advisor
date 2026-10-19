@@ -1,6 +1,8 @@
 # 参赛提交记录
 
-公开仓库已创建，源代码上传与官方报名回执以本文件后续记录为准。
+公开源码已经上传，2026-10-19 13:53:11（北京时间）已提交官方报名 Issue。当前等待系统校验，不将提交等同报名成功。
+
+报名 Issue：https://github.com/M-China/mcd-developer-innovation-challenge/issues/882
 
 项目名称：麦麦点餐参谋
 

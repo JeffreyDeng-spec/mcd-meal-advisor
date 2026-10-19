@@ -10,6 +10,8 @@
 
 项目仓库：[JeffreyDeng-spec/mcd-meal-advisor](https://github.com/JeffreyDeng-spec/mcd-meal-advisor)。
 
+参赛申请：[官方 Issue #882](https://github.com/M-China/mcd-developer-innovation-challenge/issues/882)，实际报名状态见官方回复。
+
 ## 先看演示
 
 运行 `python3 examples/demo.py` 后直接打开 [docs/demo.html](docs/demo.html)。所有门店、价格和券均为合成数据，不需要 Token、不联网。网页支持预算筛选、餐单差价对比、券体检及复制修改请求；比较区可查看所有预算内有效报价，推荐卡最多三张；改餐在 AI 对话中完成并重新核价。
