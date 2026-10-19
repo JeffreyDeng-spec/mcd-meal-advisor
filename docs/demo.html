@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>麦麦点餐参谋 · 本轮餐单</title>
+<style>
+:root{--bg:#f6f3ec;--paper:#fffefb;--ink:#242a25;--muted:#697168;--line:#dcded2;--accent:#f3ce54;--green:#325b42}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6}main{max-width:1180px;margin:auto;padding:40px 30px 64px}header{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;padding-bottom:26px;border-bottom:1px solid var(--line)}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:700;color:var(--green)}h1{font-size:clamp(30px,4vw,46px);letter-spacing:-1px;margin:10px 0}h2{font-size:23px;letter-spacing:-.4px;margin:0}h3{font-size:18px;margin:14px 0 10px}.muted,small{color:var(--muted)}small{display:block;font-size:12px}.source{font-size:12px;border:1px solid var(--line);border-radius:40px;padding:8px 14px;max-width:300px}.brief{display:grid;grid-template-columns:1fr 340px;gap:36px;padding:28px 0}#store{font-weight:650;margin:0}#address{font-size:13px;margin:4px 0 16px}#request{margin:0}form{background:#e9ecdf;padding:18px;border-radius:16px}label{display:block;font-size:13px;font-weight:650}.budget-row{display:flex;gap:8px;margin:10px 0}input{width:100%;min-width:0;font:inherit;font-size:20px;background:var(--paper);border:1px solid #adb69f;padding:8px 12px;border-radius:8px}button,select{font:inherit}button{cursor:pointer;border:1px solid var(--line);border-radius:9px;padding:10px 14px;background:var(--paper);font-size:13px;font-weight:650}button:hover{border-color:var(--green)}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #39694b;outline-offset:3px}.primary{background:var(--accent);border-color:var(--accent)}#budget-error{color:#9e362e;font-size:13px}#original-budget{font-size:11px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:15px}.pill{font-size:11px;padding:4px 9px;border-radius:30px;background:#edf0e5;color:var(--green);display:inline-block}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin:20px 0 28px}.meal-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;min-width:0}.card-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.number{font-size:12px;color:var(--muted)}.plate{height:96px;display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0 0;background:radial-gradient(ellipse at center,#fffefb 32%,#e9ecd9 33%,#e9ecd9 47%,transparent 48%);color:var(--green)}.plate-number{font-size:32px;font-weight:600}.plate-label{font-size:12px}.meal-card h3{font-size:19px;overflow-wrap:anywhere}.meal-card ul{font-size:13px;color:var(--muted);padding-left:18px;margin:0 0 20px}.price{display:flex;gap:8px;align-items:baseline;margin-top:auto}.price strong{font-size:35px;letter-spacing:-1px}.price span{font-size:11px;color:var(--muted)}.remaining{font-size:13px;color:var(--green);margin:0}.comparison{font-size:12px;font-weight:650}.meal-card p.muted{font-size:12px;margin:4px 0}.meal-card button{margin-top:18px;width:100%}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:20px}.selects{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}select{width:100%;padding:10px;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:12px}.coupon-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:12px}.coupon{padding:18px;background:#f5f5ef;border-radius:12px;overflow-wrap:anywhere}.coupon h3{font-size:15px;margin:0 0 8px}.coupon p{font-size:13px;margin:8px 0}.notice{font-size:13px}#history{font-size:12px;color:var(--muted)}#run{font-size:11px;overflow-wrap:anywhere}footer{border-top:1px solid var(--line);margin-top:28px;padding-top:20px;font-size:12px;color:var(--muted)}.footer-row{display:flex;gap:20px;justify-content:space-between;align-items:center}#copy-status{font-size:13px;color:var(--green)}textarea{display:block;width:100%;min-height:130px;margin-top:18px;padding:15px;font:inherit;border:1px solid var(--green)}[hidden]{display:none!important}#diff p{font-size:13px}#status{font-size:14px;color:var(--muted)}
+@media(max-width:850px){.brief{grid-template-columns:1fr 280px;gap:20px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}header{display:block}.source{margin-top:16px;display:inline-block}}@media(max-width:600px){main{padding:24px 16px 40px}.brief,.cards,.coupon-grid,.selects{grid-template-columns:1fr}.brief{gap:18px}.cards{gap:14px}.meal-card{padding:20px}.plate{height:72px}.panel{padding:20px}.footer-row{display:block}.footer-row button{margin-top:12px}h1{font-size:32px}}@media print{body{background:white}main{padding:0}.cards{grid-template-columns:repeat(3,1fr)}button,form,.selects{display:none}.meal-card,.coupon{break-inside:avoid}}
+</style></head><body><main>
+<header><div><div class="eyebrow">MEAL ADVISOR / 本轮餐单</div><h1>今天这餐，选得明白。</h1><p class="muted">预算、口味、优惠，放在一起比较。</p></div><div id="source" class="source"></div></header>
+<section class="brief" aria-label="本次需求"><div><p id="store"></p><p id="address" class="muted"></p><p id="request"></p></div><form id="budget-form"><label for="budget">调整本轮筛选预算</label><div class="budget-row"><input id="budget" type="text" inputmode="decimal" aria-describedby="original-budget budget-error"><button type="submit">筛选</button></div><div id="original-budget" class="muted"></div><div id="budget-error" role="alert"></div></form></section>
+<section aria-labelledby="options-title"><div class="section-head"><h2 id="options-title">你的餐单选择</h2><span id="count" class="pill"></span></div><p id="status" role="status"></p><div id="cards" class="cards"></div><p class="notice">当前筛选预算 <strong id="budget-value"></strong>。最多展示三种不同餐单；“最低实付”仅指本轮已核价候选。</p></section>
+<section id="compare" class="panel" aria-labelledby="compare-title"><h2 id="compare-title">多花的钱，换来了什么？</h2><div class="selects"><label>从这一份<select id="compare-a"></select></label><label>换成这一份<select id="compare-b"></select></label></div><div id="diff"></div></section>
+<section class="panel" aria-labelledby="audit-title"><div class="section-head"><h2 id="audit-title">顺手看看，你的券</h2><span class="pill">不为用券而超预算</span></div><p class="muted notice">账户持有不等于本店、本餐单适用。净节省只来自同内容的官方报价对照。</p><div id="audit-list" class="coupon-grid"></div></section>
+<section id="history" class="panel" aria-label="历史报价"></section>
+<footer><div class="footer-row"><div><p>报价展示有效期为核价后 15 分钟，这是本项目的展示策略。更改餐品后需要重新核价。</p><p>报告在本机运行，不实时联网、不下单、不领券。公开分享前请自行检查门店和偏好等信息。</p></div><button id="renew" type="button">复制重新查询请求</button></div><p id="copy-status" role="status" aria-live="polite"></p><p id="run"></p><p>麦麦点餐参谋 · 独立参赛作品，非麦当劳官方产品。</p></footer>
+</main><script id="report-data" type="application/json">{"schema_version": 1, "run_id": "b33d9c69802d185fe641", "mode": "demo", "generated_at": "2026-10-19T13:28:49+08:00", "store": {"code": "100001", "name": "演示门店 · 合成数据", "address": "示例商圈，不是真实餐厅"}, "request": {"budget_cents": 3000, "required": [{"terms": ["汉堡"], "codes": [], "quantity": 1}, {"terms": ["小食"], "codes": [], "quantity": 1}], "excluded": ["饮料"], "preferred": ["香烤"], "pinned_codes": [], "allow_extras": false}, "plans": [{"id": "d44b5e1b11aeb49b", "name": "香烤鸡肉汉堡 ×1 + 小份玉米杯 ×1", "items": [{"name": "香烤鸡肉汉堡", "quantity": 1}, {"name": "小份玉米杯", "quantity": 1}], "contents_key": "4958dd0797d249029e373105c3c97a4908c2b1181d5e41f07a148525432fc5ff", "payable_cents": 2400, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 1, "coupon_name": null, "coupon_expiry": null, "coupon_saving_cents": null, "coupon_comparison_expires_at": null, "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 d44b5e1b11aeb49b 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}, {"id": "9b26fb390008dd9b", "name": "经典鸡肉汉堡 ×1 + 小份玉米杯 ×1", "items": [{"name": "经典鸡肉汉堡", "quantity": 1}, {"name": "小份玉米杯", "quantity": 1}], "contents_key": "3003c7fce0a75729ad1c7c5183a5c21b206e3d563e23cf37f907b3a312c2ef03", "payable_cents": 2400, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 0, "coupon_name": null, "coupon_expiry": null, "coupon_saving_cents": null, "coupon_comparison_expires_at": null, "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 9b26fb390008dd9b 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}, {"id": "88726a6ab4c851e2", "name": "经典鸡肉汉堡 ×1 + 小份玉米杯 ×1", "items": [{"name": "经典鸡肉汉堡", "quantity": 1}, {"name": "小份玉米杯", "quantity": 1}], "contents_key": "3003c7fce0a75729ad1c7c5183a5c21b206e3d563e23cf37f907b3a312c2ef03", "payable_cents": 1890, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 0, "coupon_name": "示例·经典鸡肉汉堡优惠", "coupon_expiry": "2026-10-20T23:59:59+08:00", "coupon_saving_cents": 510, "coupon_comparison_expires_at": "2026-10-19T13:43:49+08:00", "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 88726a6ab4c851e2 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}, {"id": "8dcc9e34f3984cdf", "name": "经典鸡肉汉堡 ×1 + 小份薯条 ×1", "items": [{"name": "经典鸡肉汉堡", "quantity": 1}, {"name": "小份薯条", "quantity": 1}], "contents_key": "f39e31001863d744a20ea56d2b882f57c3e6c23855f2335df0b727980b98d32b", "payable_cents": 2600, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 0, "coupon_name": null, "coupon_expiry": null, "coupon_saving_cents": null, "coupon_comparison_expires_at": null, "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 8dcc9e34f3984cdf 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}, {"id": "e7368bc4c6b8f594", "name": "经典鸡肉汉堡 ×1 + 小份薯条 ×1", "items": [{"name": "经典鸡肉汉堡", "quantity": 1}, {"name": "小份薯条", "quantity": 1}], "contents_key": "f39e31001863d744a20ea56d2b882f57c3e6c23855f2335df0b727980b98d32b", "payable_cents": 2090, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 0, "coupon_name": "示例·经典鸡肉汉堡优惠", "coupon_expiry": "2026-10-20T23:59:59+08:00", "coupon_saving_cents": 510, "coupon_comparison_expires_at": "2026-10-19T13:43:49+08:00", "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 e7368bc4c6b8f594 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}, {"id": "3b094dfa372d9a79", "name": "香烤鸡肉汉堡 ×1 + 小份玉米杯 ×1", "items": [{"name": "香烤鸡肉汉堡", "quantity": 1}, {"name": "小份玉米杯", "quantity": 1}], "contents_key": "4958dd0797d249029e373105c3c97a4908c2b1181d5e41f07a148525432fc5ff", "payable_cents": 2700, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 1, "coupon_name": null, "coupon_expiry": null, "coupon_saving_cents": null, "coupon_comparison_expires_at": null, "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 3b094dfa372d9a79 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}, {"id": "5e196fb86935c806", "name": "香烤鸡肉汉堡 ×1 + 小份薯条 ×1", "items": [{"name": "香烤鸡肉汉堡", "quantity": 1}, {"name": "小份薯条", "quantity": 1}], "contents_key": "f689fa145208160bbc759d23ed5e86a84a6d19eb075dd935f97dd1f954bf8cbf", "payable_cents": 2900, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 1, "coupon_name": null, "coupon_expiry": null, "coupon_saving_cents": null, "coupon_comparison_expires_at": null, "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 5e196fb86935c806 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}, {"id": "2cf7524695351ee6", "name": "经典鸡肉汉堡 ×1 + 小份玉米杯 ×1", "items": [{"name": "经典鸡肉汉堡", "quantity": 1}, {"name": "小份玉米杯", "quantity": 1}], "contents_key": "3003c7fce0a75729ad1c7c5183a5c21b206e3d563e23cf37f907b3a312c2ef03", "payable_cents": 1990, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 0, "coupon_name": null, "coupon_expiry": null, "coupon_saving_cents": null, "coupon_comparison_expires_at": null, "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 2cf7524695351ee6 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}, {"id": "51163e7ef13314f0", "name": "经典鸡肉汉堡 ×1 + 小份薯条 ×1", "items": [{"name": "经典鸡肉汉堡", "quantity": 1}, {"name": "小份薯条", "quantity": 1}], "contents_key": "f39e31001863d744a20ea56d2b882f57c3e6c23855f2335df0b727980b98d32b", "payable_cents": 2290, "quoted_at": "2026-10-19T13:28:49+08:00", "expires_at": "2026-10-19T13:43:49+08:00", "fresh": true, "preference_score": 0, "coupon_name": null, "coupon_expiry": null, "coupon_saving_cents": null, "coupon_comparison_expires_at": null, "request_text": "使用麦麦点餐参谋，基于本轮 b33d9c69802d185fe641 的方案 51163e7ef13314f0 修改餐品。保留预算和原有要求，请先问我具体换什么，再对完整餐单重新核价。"}], "coupon_audit": [{"name": "示例·经典鸡肉汉堡优惠", "state": "本次适用", "held": true, "store_available": true, "basket_verified": true, "expires_at": "2026-10-20T23:59:59+08:00", "restrictions": "示例限制：到店可用，以本轮合成报价演示", "saving_cents": 510, "verification_expires_at": "2026-10-19T13:43:49+08:00"}], "stock_complete": true, "stock_status": "loaded", "attempts": 9, "failures": 0, "pending": 0}</script><script>/* Pure report logic is shared by the standalone page and Node tests. No network. */
+(function (root) {
+  'use strict';
+  const money = n => '¥' + (n / 100).toFixed(2);
+  const fresh = (p, now) => Date.parse(p.quoted_at) <= now && now <= Date.parse(p.expires_at);
+  const auditStale = (coupon,now=Date.now()) => !!coupon.verification_expires_at && now>Date.parse(coupon.verification_expires_at);
+  function comparablePlans(plans, budget, now = Date.now()) {
+    const groups = new Map();
+    for (const p of plans.filter(p => p.payable_cents <= budget && fresh(p, now))) {
+      const old = groups.get(p.contents_key);
+      if (!old || p.payable_cents < old.payable_cents ||
+          (p.payable_cents === old.payable_cents && ((p.coupon_expiry || '9999') < (old.coupon_expiry || '9999') ||
+          ((p.coupon_expiry || '9999') === (old.coupon_expiry || '9999') && p.id.localeCompare(old.id)<0)))) groups.set(p.contents_key, p);
+    }
+    return [...groups.values()].sort((a,b)=>a.payable_cents-b.payable_cents || a.id.localeCompare(b.id));
+  }
+  function pickPlans(plans, budget, now = Date.now()) {
+    const pool = comparablePlans(plans,budget,now), chosen = new Map();
+    function add(list, label, compare) {
+      const p = [...list].sort(compare)[0];
+      if (!p) return;
+      if (!chosen.has(p.id)) chosen.set(p.id, {plan:p, labels:[]});
+      chosen.get(p.id).labels.push(label);
+    }
+    const cost = (a,b) => a.payable_cents-b.payable_cents || b.preference_score-a.preference_score ||
+      (a.coupon_expiry || '9999').localeCompare(b.coupon_expiry || '9999') || a.id.localeCompare(b.id);
+    add(pool,'最低实付',cost);
+    add(pool.filter(p=>p.preference_score>0),'更合口味',(a,b) => b.preference_score-a.preference_score || cost(a,b));
+    add(pool.filter(p => p.coupon_name),'用券参考',(a,b) => a.payable_cents-b.payable_cents ||
+      (a.coupon_expiry || '9999').localeCompare(b.coupon_expiry || '9999') || a.id.localeCompare(b.id));
+    return [...chosen.values()];
+  }
+  function difference(a,b) {
+    const counts = p => { const m = new Map(); for(const x of p.items) m.set(x.name,(m.get(x.name)||0)+x.quantity); return m; };
+    const x=counts(a), y=counts(b), added=[], removed=[], unchanged=[];
+    for(const name of new Set([...x.keys(),...y.keys()])) {
+      const n=x.get(name)||0, m=y.get(name)||0;
+      if(m>n) added.push({name,quantity:m-n});
+      if(n>m) removed.push({name,quantity:n-m});
+      if(Math.min(n,m)>0) unchanged.push({name,quantity:Math.min(n,m)});
+    }
+    return {added,removed,unchanged,delta_cents:b.payable_cents-a.payable_cents};
+  }
+  function view(data,budget,now=Date.now()) {
+    const current=data.plans.filter(p=>fresh(p,now));
+    return {chosen:pickPlans(data.plans,budget,now),
+      comparable:comparablePlans(data.plans,budget,now),
+      shortfall:current.length?Math.max(0,Math.min(...current.map(p=>p.payable_cents))-budget):null,
+      expired:data.plans.filter(p=>!fresh(p,now)).length};
+  }
+  async function copyText(text, doc = typeof document==='undefined'?null:document, nav = typeof navigator==='undefined'?null:navigator) {
+    if(nav && nav.clipboard && root.isSecureContext) {
+      try { await nav.clipboard.writeText(text); return 'copied'; } catch (_) { /* file:// fallback */ }
+    }
+    if(!doc) return 'manual';
+    const area=doc.createElement('textarea'); area.value=text; area.setAttribute('aria-label','可手动复制的修改请求');
+    doc.body.appendChild(area); area.select();
+    let copied=false; try { copied=doc.execCommand('copy'); } catch (_) {}
+    if(copied) area.remove(); else { area.focus(); area.scrollIntoView({block:'center'}); }
+    return copied?'copied':'manual';
+  }
+  const api={money,fresh,auditStale,comparablePlans,pickPlans,difference,view,copyText};
+  if(typeof module!=='undefined' && module.exports) module.exports=api;
+  root.MealReport=api;
+  if(typeof document==='undefined') return;
+
+  const data=JSON.parse(document.getElementById('report-data').textContent);
+  const byId=id=>document.getElementById(id);
+  const node=(tag,text,cls)=>{const n=document.createElement(tag); if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
+  const time=t=>new Date(t).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false});
+  const initialBudget=data.request.budget_cents;
+  let budget=initialBudget;
+  const req=data.request.required.map(g=>(g.terms.length?g.terms.join(' / '):'已指定餐品')+' ×'+g.quantity).join('、');
+  byId('source').textContent=data.mode==='demo'?'合成数据演示 · 不代表实际售价':'官方 MCP 核价 · 历史结果按时间标注';
+  byId('store').textContent=data.store.name+' · 到店自取';
+  byId('address').textContent=data.store.address;
+  byId('request').textContent=req+(data.request.excluded.length?'；不要：'+data.request.excluded.join('、'):'')+
+    (data.request.preferred.length?'；偏好：'+data.request.preferred.join('、'):'');
+  byId('budget').value=(initialBudget/100).toFixed(2);
+  byId('original-budget').textContent='原预算 '+money(initialBudget)+' · 当前筛选只使用已有报价';
+  byId('run').textContent='本轮 '+data.run_id+' · 已核价 '+data.attempts+' 次'+
+    (data.failures?' · '+data.failures+' 份失败未报价':'')+(data.pending?' · '+data.pending+' 份尚未核价':'');
+  function renderAudit(now) {
+  const audit=byId('audit-list');audit.replaceChildren();
+  if(!data.coupon_audit.length) audit.append(node('p',data.stock_status==='unavailable'?'券包未成功读取，本轮不判断账户持券情况。':'当前券包为空。仍可比较不带券的真实报价。','muted'));
+  for(const c of data.coupon_audit) {
+    const stale=auditStale(c,now);
+    const row=node('article',undefined,'coupon'); row.append(node('h3',c.name),node('span',stale?'本轮核验已过期，需重新核价':c.state,'pill'));
+    row.append(node('p',(c.held?'账户持有':'账户持有未确认')+' · '+(c.store_available?'本店可用':'本店适用性未确认')+' · '+(c.basket_verified?'本轮餐单已核验':'本轮餐单尚未核验'),'muted'));
+    row.append(node('p',c.restrictions||'使用限制尚未完整确认','muted'));
+    row.append(node('p',stale?'已验证金额仅供回看，请回到聊天重新核价':c.saving_cents===null?'本轮净节省：未知':c.saving_cents>=0?
+      '同内容对照，少付 '+money(c.saving_cents):'同内容对照，反而多付 '+money(-c.saving_cents)));
+    if(c.expires_at) row.append(node('small','有效期至 '+time(c.expires_at)));
+    audit.append(row);
+  }
+  if(!data.stock_complete) audit.append(node('p','当前券包未完整获取；以上仅涵盖已读取部分。','notice'));
+  }
+
+  function render() {
+    const now=Date.now(), result=view(data,budget,now), cards=byId('cards'); cards.replaceChildren();
+    renderAudit(now);
+    byId('budget-value').textContent=money(budget);
+    byId('count').textContent=result.chosen.length+' 份可选';
+    byId('status').textContent=result.chosen.length?'先看总价，再看你更想吃什么。':
+      result.shortfall===null?'本轮暂无新鲜有效报价，请回到聊天重新核价。':
+      '当前预算内没有已核价方案，最近一份还差 '+money(result.shortfall)+'。';
+    const floor=result.chosen.length?Math.min(...result.chosen.map(x=>x.plan.payable_cents)):null;
+    for(const [i,entry] of result.chosen.entries()) {
+      const p=entry.plan, card=node('article',undefined,'meal-card');
+      const head=node('div',undefined,'card-head'); head.append(node('span','0'+(i+1),'number'),node('span',entry.labels.join(' · '),'pill'));card.append(head);
+      const plate=node('div',undefined,'plate');plate.setAttribute('aria-hidden','true');plate.append(node('span',String(p.items.reduce((n,x)=>n+x.quantity,0)),'plate-number'),node('span','份餐品','plate-label'));card.append(plate);
+      card.append(node('h3',p.name));
+      const list=node('ul');for(const item of p.items)list.append(node('li',item.name+' ×'+item.quantity));card.append(list);
+      const price=node('div',undefined,'price');price.append(node('strong',money(p.payable_cents)),node('span','整单应付'));card.append(price);
+      card.append(node('p','预算剩余 '+money(budget-p.payable_cents),'remaining'));
+      card.append(node('p',p.payable_cents===floor?'本轮推荐中实付最低':'比最低实付多 '+money(p.payable_cents-floor),'comparison'));
+      card.append(node('p',p.coupon_name?'使用：'+p.coupon_name:'不使用优惠券','muted'));
+      if(p.coupon_name)card.append(node('p',p.coupon_comparison_expires_at && now>Date.parse(p.coupon_comparison_expires_at)?'同内容对照已过期，需重新核价':p.coupon_saving_cents===null?'同内容不带券对照尚未验证':
+        p.coupon_saving_cents>=0?'同内容用券少付 '+money(p.coupon_saving_cents):'同内容用券多付 '+money(-p.coupon_saving_cents),'muted'));
+      card.append(node('small','核价 '+time(p.quoted_at)));
+      const button=node('button','复制修改请求','primary');button.type='button';
+      button.addEventListener('click',async()=>{const result=await copyText(p.request_text);byId('copy-status').textContent=result==='copied'?'已复制。回到聊天粘贴后说明想换什么。':'自动复制不可用，页面底部已展开文本，请手动复制。';});card.append(button);
+      cards.append(card);
+    }
+    const selects=[byId('compare-a'),byId('compare-b')], available=result.comparable;
+    selects.forEach((select,i)=>{const previous=select.value;select.replaceChildren();for(const p of available){const option=node('option',p.name+' · '+money(p.payable_cents));option.value=p.id;select.append(option);}select.value=available.some(p=>p.id===previous)?previous:(available[i]||available[0]||{}).id||'';});
+    byId('compare').hidden=available.length<2;
+    renderDiff();
+    const history=byId('history');history.replaceChildren();history.hidden=!result.expired;
+    if(result.expired) {
+      history.append(node('h3','过期报价 · 仅供回看'));
+      for(const p of data.plans.filter(p=>!fresh(p,now))) history.append(node('p',p.name+' · '+money(p.payable_cents)+' · 核价 '+time(p.quoted_at)));
+    }
+    const renewal='使用麦麦点餐参谋，参考本轮 '+data.run_id+'，预算 '+(budget/100).toFixed(2)+' 元，保留原有必选和排除项，请重新查询菜单并核价。';
+    byId('renew').onclick=async()=>{const r=await copyText(renewal);byId('copy-status').textContent=r==='copied'?'已复制重新查询请求。':'请手动复制页面底部文本。';};
+  }
+  function renderDiff() {
+    const a=data.plans.find(p=>p.id===byId('compare-a').value),b=data.plans.find(p=>p.id===byId('compare-b').value),out=byId('diff');out.replaceChildren();if(!a||!b)return;
+    const d=difference(a,b),format=xs=>xs.length?xs.map(x=>x.name+' ×'+x.quantity).join('、'):'无';
+    out.append(node('p','增加：'+format(d.added)),node('p','减少：'+format(d.removed)),node('p','保持：'+format(d.unchanged)));
+    out.append(node('strong','整单差价 '+(d.delta_cents>=0?'+':'−')+money(Math.abs(d.delta_cents))),node('p','整单差价不代表新增餐品的单独售价。','muted'));
+    const button=node('button','复制右侧方案的修改请求');button.type='button';
+    button.addEventListener('click',async()=>{const r=await copyText(b.request_text);byId('copy-status').textContent=r==='copied'?'已复制。回到聊天粘贴后说明想换什么。':'请手动复制页面底部文本。';});out.append(button);
+  }
+  byId('budget-form').addEventListener('submit',event=>{event.preventDefault();const s=byId('budget').value.trim();if(!/^\d+(\.\d{1,2})?$/.test(s)||Number(s)>1000){byId('budget-error').textContent='请输入 0–1000 元，最多两位小数。';return;}budget=Math.round(Number(s)*100);byId('budget-error').textContent='';render();});
+  byId('compare-a').addEventListener('change',renderDiff);byId('compare-b').addEventListener('change',renderDiff);
+  render();setInterval(render,30000);
+})(typeof globalThis==='undefined'?this:globalThis);
+</script></body></html>
