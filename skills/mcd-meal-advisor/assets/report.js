@@ -62,7 +62,7 @@
   const api={money,fresh,auditStale,comparablePlans,pickPlans,difference,view,copyText};
   if(typeof module!=='undefined' && module.exports) module.exports=api;
   root.MealReport=api;
-  if(typeof document==='undefined') return;
+  if(typeof document==='undefined' || !document.getElementById('report-data')) return;
 
   const data=JSON.parse(document.getElementById('report-data').textContent);
   const byId=id=>document.getElementById(id);

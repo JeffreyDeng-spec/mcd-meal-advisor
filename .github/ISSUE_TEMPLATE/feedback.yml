@@ -1,0 +1,30 @@
+name: 试用反馈
+description: 分享一个脱敏的预算配餐或换餐体验
+title: '[试用反馈] '
+body:
+  - type: markdown
+    attributes:
+      value: 感谢试用！请勿上传 Token、手机号、完整券码、账户原始响应或私人信息。安全问题请使用仓库 Security 页私密报告。
+  - type: dropdown
+    id: mode
+    attributes:
+      label: 你体验了哪个入口？
+      options:
+        - 在线合成数据试玩
+        - 安装技能后的真实只读查询
+    validations:
+      required: true
+  - type: textarea
+    id: scene
+    attributes:
+      label: 你的使用场景和预期
+      description: 例如预算30元、不要饮料、想保留汉堡换小食。请脱敏。
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: 实际体验与建议
+      description: 哪一步顺畅，哪一步卡住？不要粘贴账户原始响应。
+    validations:
+      required: true

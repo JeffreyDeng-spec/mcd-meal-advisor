@@ -1,4 +1,4 @@
-# 麦麦点餐参谋 · v0.1.0
+# 麦麦点餐参谋 · v0.2.0
 
 把“怎么买划算”“预算内选哪餐”“手里的券值不值得用”放进同一次点餐。
 
@@ -6,15 +6,19 @@
 
 目标用户：希望先定预算、比较餐单、再决定是否用券的单人到店取餐用户。
 
-![本地交互报告预览，全部为合成数据](docs/demo-preview.png)
+**[直接在线试玩](https://jeffreydeng-spec.github.io/mcd-meal-advisor/)** · **[一分钟演示](https://jeffreydeng-spec.github.io/mcd-meal-advisor/#film)** · **[下载技能](https://github.com/JeffreyDeng-spec/mcd-meal-advisor/releases/latest)** · **[试用反馈](https://github.com/JeffreyDeng-spec/mcd-meal-advisor/issues/new?template=feedback.yml)**
+
+![在线试玩预览，全部为合成数据](site/public/social-card.png)
 
 项目仓库：[JeffreyDeng-spec/mcd-meal-advisor](https://github.com/JeffreyDeng-spec/mcd-meal-advisor)。
 
 已收到官方参赛成功回执：[官方 Issue #882](https://github.com/M-China/mcd-developer-innovation-challenge/issues/882#issuecomment-6260735805)（2026-10-19）。
 
-下载：[v0.1.0 发布页](https://github.com/JeffreyDeng-spec/mcd-meal-advisor/releases/tag/v0.1.0)，包含完整技能、源码和 SHA-256 校验文件。
+下载：[最新发布页](https://github.com/JeffreyDeng-spec/mcd-meal-advisor/releases/latest)，包含完整技能、源码和 SHA-256 校验文件。
 
 ## 先看演示
+
+[在线试玩](https://jeffreydeng-spec.github.io/mcd-meal-advisor/)无需安装、登录或 Key。可以主动选演示门店、比较方案、模拟换餐、重置演示时钟，再复制需求回聊天查询真实价格。网页固定体验场景，全部为合成数据，不处理任意自然语言、不调用真实业务API、不接收凭证。网页与一分钟视频的验收及安全边界见 [docs/PUBLIC_TRIAL.md](docs/PUBLIC_TRIAL.md)。
 
 运行 `python3 examples/demo.py` 后直接打开 [docs/demo.html](docs/demo.html)。所有门店、价格和券均为合成数据，不需要 Token、不联网。网页支持预算筛选、餐单差价对比、券体检及复制修改请求；比较区可查看所有预算内有效报价，推荐卡最多三张；改餐在 AI 对话中完成并重新核价。
 
@@ -56,6 +60,7 @@ AI 会让你选店，查询当前菜单，生成最多20个核价任务，并把
 ```sh
 python3 -B -m unittest discover -s tests -v
 node tests/test_report.cjs
+node tests/test_site.cjs
 python3 -B examples/demo.py
 ```
 
@@ -66,3 +71,5 @@ python3 -B examples/demo.py
 业务代码与合成示例为原创实现，采用 MIT；参考现有参赛项目的功能方向，未直接拼接其代码。官方参赛声明保留官方原文。本项目没有实际使用 WorkBuddy 开发，不提供虚构的 workbuddy.md。
 
 参赛材料见 [docs/SUBMISSION.md](docs/SUBMISSION.md)。价格、供货与券适用性以官方当次接口结果为准，营养与配料不在本版推荐范围内。
+
+公开站点使用 `python3 scripts/build_site.py --output <新的空目录>` 构建，只从显式清单复制静态文件和合成数据，不打包真实运行目录。安全问题请使用仓库 Security 页私密报告；不要公开发送 Key 或完整券码。
